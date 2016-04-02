@@ -1,0 +1,19 @@
+{
+  "name": "softruck-test",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramonmulia/softruck-test-web.git"
+  },
+  "author": "Ramon Mulia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ramonmulia/softruck-test-web/issues"
+  },
+  "homepage": "https://github.com/ramonmulia/softruck-test-web#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "serve-favicon": "^2.3.0",
+    "spa-server": "^1.0.0"
+  }
+}

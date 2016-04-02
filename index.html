@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+  <link href="bower_components/angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="assets/css/index.css" />
+  <link href="bower_components/ng-prettyjson/dist/ng-prettyjson.min.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body ng-app="softruck-test">
+  <header>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2><span>Softruck test - Getting fuel information from ANP</span></h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+  </header>
+
+  <article>
+    <md-content ng-controller="InformationController as i">
+      <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="Informations">
+          <div layout="row" layout-align="center center" ng-if="i.loadingData">
+            <md-progress-circular class="loading-table" md-diameter="100px" md-mode="indeterminate"></md-progress-circular>
+          </div>
+
+          <div ng-if="!i.data.length && !i.loadingData" class="no-content-label" layout="row" layout-align="center center">
+            <label>No content, please click at button to get.</label>
+          </div>
+
+          <section layout="column" class="md-whiteframe-4dp table-section" ng-if="i.data.length && !i.loadingData">
+            <md-toolbar class="md-table-toolbar md-default">
+              <div class="md-toolbar-tools">
+                <span>ANP fuel information by city</span>
+              </div>
+            </md-toolbar>
+
+            <md-table-container>
+              <table md-table md-table md-progress="i.promise">
+                <thead md-head>
+                  <tr md-row>
+                    <th md-column>State</th>
+                    <th md-column>City</th>
+                    <th md-column>Fuel type</th>
+                    <th md-column>Station founded</th>
+                    <th md-column>Details</th>
+                  </tr>
+                </thead>
+                <tbody md-body ng-repeat="info in i.data">
+                  <tr md-row ng-repeat="city in info.cities">
+                    <td md-cell>{{info.name}}</td>
+                    <td md-cell>{{city.name}}</td>
+                    <td md-cell>{{i.getFuelTypeName(city.statistics)}}</td>
+                    <td md-cell>{{city.stations.length}}</td>
+                    <td md-cell>
+                      <md-icon class="icon-details" ng-click="i.showDetail(city)">info</md-icon>
+                    </td>
+                    <md-icon>
+                    </md-icon>
+                  </tr>
+                </tbody>
+              </table>
+            </md-table-container>
+          </section>
+          <section layout="row" layout-align="end end">
+            <md-button flex-md="100" class="md-primary md-raised" ng-disabled="i.loadingData" ng-click="i.getInformation()">Get informations</md-button>
+          </section>
+        </md-tab>
+        <md-tab label="JSON">
+          <div ng-if="!i.data.length && !i.loadingData" class="no-content-label" layout="row" layout-align="center center">
+            <label>No content.</label>
+          </div>
+          <section layout="column" class="md-whiteframe-4dp table-section" ng-if="i.data.length && !i.loadingData">
+            <pretty-json json="i.data"></pretty-json>
+          </section>
+        </md-tab>
+      </md-tabs>
+    </md-content>
+  </article>
+
+
+
+
+  <sumary></sumary>
+
+  <script src="bower_components/angular/angular.min.js" type="text/javascript"></script>
+  <script src="bower_components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
+  <script src="bower_components/angular-aria/angular-aria.min.js" type="text/javascript"></script>
+  <script src="bower_components/angular-messages/angular-messages.min.js" type="text/javascript"></script>
+  <script src="bower_components/angular-material/angular-material.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+  <script type="text/javascript" src="bower_components/ng-prettyjson/dist/ng-prettyjson.min.js"></script>
+
+  <!-- Dependencies -->
+  <script src="app/app.module.js"></script>
+  <script src="app/app.config.js"></script>
+  <script src="app/app.gateway.js"></script>
+  <script src="app/information/information.service.js"></script>
+  <script src="app/information/information.controller.js"></script>
+
+</body>
+
+</html>
