@@ -3,7 +3,7 @@
 
   angular.module('softruck-test').controller('InformationController', informationController);
 
-  informationController.$index = ['$http', '$timeout', '$mdDialog', 'informationService'];
+  informationController.$inject = ['$http', '$timeout', '$mdDialog', 'informationService'];
 
   function informationController($http, $timeout, $mdDialog, informationService) {
     var vm = this;
@@ -12,13 +12,21 @@
     vm.getInformation = getInformation;
     vm.showDetail = showDetail;
 
+    loadStates();
+
     function getFuelTypeName(statics) {
-      console.log(statics);
       var fuelTypes = statics.reduce(function(prev, current) {
         return (prev === '' ? '' : prev + ', ') + current.type;
       }, '');
 
       return fuelTypes;
+    }
+
+    function loadStates() {
+      informationService.getStates()
+        .then(function(data) {
+          vm.states = data;
+        });
     }
 
     function getInformation() {
@@ -38,8 +46,8 @@
         });
     }
 
-    function showDetail(item) {
-      informationService.showInformationDetail(item);
+    function showDetail(state, item) {
+      informationService.showInformationDetail(state, item);
     }
   }
 })();

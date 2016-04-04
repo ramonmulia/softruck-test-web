@@ -2,10 +2,11 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
-  <link href="bower_components/angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="vendor/angular-material/angular-material.min.css">
+  <link href="vendor/angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="assets/css/index.css" />
-  <link href="bower_components/ng-prettyjson/dist/ng-prettyjson.min.css" rel="stylesheet" type="text/css" />
+  <link href="vendor/ng-prettyjson/dist/ng-prettyjson.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -22,7 +23,24 @@
   <article>
     <md-content ng-controller="InformationController as i">
       <md-tabs md-dynamic-height md-border-bottom>
-        <md-tab label="Informations">
+        <md-tab label="Informations" layout="column" layout-align="center center">
+          <section layout="row" layout-align="center center" style="margin: 2px;">
+            <div class="md-whiteframe-4dp" style="margin: 10px" flex-gt-lg="30" flex-sm="100" flex-lg="30" layout="column" layout-align="center center">
+              <h1 class="md-title" style="margin: 2px;">Select a state to find fuel information</h1>
+              <md-input-container style="width: 90%;">
+                <label>State</label>
+                <md-select ng-model="i.state">
+                  <md-option ng-selected="($index == 1) ? true:false" ng-repeat="state in i.states" value="{{state.value}}">
+                    {{state.name}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+              <md-button flex-md="100" class="md-primary md-raised" ng-disabled="i.loadingData" ng-click="i.getInformation()">
+                <md-icon>search</md-icon>
+              </md-button>
+            </div>
+          </section>
+
           <div layout="row" layout-align="center center" ng-if="i.loadingData">
             <md-progress-circular class="loading-table" md-diameter="100px" md-mode="indeterminate"></md-progress-circular>
           </div>
@@ -31,15 +49,15 @@
             <label>No content, please click at button to get.</label>
           </div>
 
-          <section layout="column" class="md-whiteframe-4dp table-section" ng-if="i.data.length && !i.loadingData">
+          <section show-gt-lg show-md hide-sm hide-xs layout="column" class="md-whiteframe-4dp table-section" ng-if="i.data.length && !i.loadingData">
             <md-toolbar class="md-table-toolbar md-default">
               <div class="md-toolbar-tools">
-                <span>ANP fuel information by city</span>
+                <span>ANP fuel information</span>
               </div>
             </md-toolbar>
 
             <md-table-container>
-              <table md-table md-table md-progress="i.promise">
+              <table md-table md-table>
                 <thead md-head>
                   <tr md-row>
                     <th md-column>State</th>
@@ -56,7 +74,7 @@
                     <td md-cell>{{i.getFuelTypeName(city.statistics)}}</td>
                     <td md-cell>{{city.stations.length}}</td>
                     <td md-cell>
-                      <md-icon class="icon-details" ng-click="i.showDetail(city)">info</md-icon>
+                      <md-icon class="icon-details" ng-click="i.showDetail(info.name, city)">info</md-icon>
                     </td>
                     <md-icon>
                     </md-icon>
@@ -65,8 +83,19 @@
               </table>
             </md-table-container>
           </section>
-          <section layout="row" layout-align="end end">
-            <md-button flex-md="100" class="md-primary md-raised" ng-disabled="i.loadingData" ng-click="i.getInformation()">Get informations</md-button>
+          <section flex layout-align="center center" hide-gt-sm show-sm show-xs layout="column" ng-if="i.data.length && !i.loadingData" class="md-whiteframe-4dp">
+            <h3 style="margin: 10px">Results:</h3>
+            <div ng-repeat="info in i.data">
+              <div ng-repeat="city in info.cities" layout="column" class="md-whiteframe-2dp" style="margin:10px; padding: 5px">
+                <label><b>State: </b>{{info.name}}</label>
+                <label><b>City: </b>{{city.name}}</label>
+                <label><b>Fuel Type: </b>{{i.getFuelTypeName(city.statistics)}}</label>
+                <label><b>Stations founded: </b>{{city.stations.length}}</label>
+                <label><b>Details: </b>
+                  <md-icon class="icon-details" ng-click="i.showDetail(info.name, city)">info</md-icon>
+                </label>
+              </div>
+            </div>
           </section>
         </md-tab>
         <md-tab label="JSON">
@@ -81,19 +110,16 @@
     </md-content>
   </article>
 
-
-
-
   <sumary></sumary>
 
-  <script src="bower_components/angular/angular.min.js" type="text/javascript"></script>
-  <script src="bower_components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
-  <script src="bower_components/angular-aria/angular-aria.min.js" type="text/javascript"></script>
-  <script src="bower_components/angular-messages/angular-messages.min.js" type="text/javascript"></script>
-  <script src="bower_components/angular-material/angular-material.min.js" type="text/javascript"></script>
-  <script type="text/javascript" src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
-  <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
-  <script type="text/javascript" src="bower_components/ng-prettyjson/dist/ng-prettyjson.min.js"></script>
+  <script src="vendor/angular/angular.min.js" type="text/javascript"></script>
+  <script src="vendor/angular-animate/angular-animate.min.js" type="text/javascript"></script>
+  <script src="vendor/angular-aria/angular-aria.min.js" type="text/javascript"></script>
+  <script src="vendor/angular-messages/angular-messages.min.js" type="text/javascript"></script>
+  <script src="vendor/angular-material/angular-material.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="vendor/angular-material-data-table/dist/md-data-table.min.js"></script>
+  <script type="text/javascript" src="vendor/angular-route/angular-route.min.js"></script>
+  <script type="text/javascript" src="vendor/ng-prettyjson/dist/ng-prettyjson.min.js"></script>
 
   <!-- Dependencies -->
   <script src="app/app.module.js"></script>
@@ -101,6 +127,7 @@
   <script src="app/app.gateway.js"></script>
   <script src="app/information/information.service.js"></script>
   <script src="app/information/information.controller.js"></script>
+  <script src="app/information/_information-detail.controller.js"></script>
 
 </body>
 

@@ -4,11 +4,12 @@
   angular.module('softruck-test')
     .factory('informationService', informationService);
 
-  informationService.$inject = ['gatewayService', '$timeout', '$mdDialog'];
+  informationService.$inject = ['gatewayService', '$mdDialog'];
 
-  function informationService(gatewayService, $timeout, $mdDialog) {
+  function informationService(gatewayService, $mdDialog) {
     return {
       getInformation: getInformation,
+      getStates: getStates,
       showInformationDetail: showInformationDetail
     };
 
@@ -17,12 +18,23 @@
       return gatewayService.get(url);
     }
 
-    function showInformationDetail(item) {
+    function showInformationDetail(state, item) {
+
       $mdDialog.show({
         parent: angular.element(document.body),
-        escapeToClose: true,
-        template: '<pre>' + JSON.stringify(item, null, 4) + '</pre>'
+        clickOutsideToClose: true,
+        templateUrl: 'app/information/_information-detail.view.html',
+        controller: 'InformationDetailController',
+        locals: {
+          state: state,
+          item: item
+        }
       });
+    }
+
+    function getStates() {
+      var url = '/assets/files/states.json';
+      return gatewayService.get(url);
     }
   }
 })();
