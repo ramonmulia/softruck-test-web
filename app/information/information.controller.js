@@ -8,6 +8,7 @@
   function informationController($http, $timeout, $mdDialog, informationService) {
     var vm = this;
     vm.data = [];
+    vm.state = {};
     vm.getFuelTypeName = getFuelTypeName;
     vm.getInformation = getInformation;
     vm.showDetail = showDetail;
@@ -26,20 +27,23 @@
       informationService.getStates()
         .then(function(data) {
           vm.states = data;
+        })
+        .catch(function() {
+          informationService.showAlert('Error at getting information, please try again later.');
         });
     }
 
-    function getInformation() {
+    function getInformation(state) {
 
       vm.data = [];
       vm.loadingData = true;
 
-      informationService.getInformation()
+      informationService.getInformation(state)
         .then(function(data) {
           vm.data = data;
         })
         .catch(function() {
-
+          informationService.showAlert('Error at getting information, please try again later.');
         })
         .finally(function() {
           vm.loadingData = false;
