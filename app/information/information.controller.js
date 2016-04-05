@@ -28,8 +28,8 @@
         .then(function(data) {
           vm.states = data;
         })
-        .catch(function() {
-          informationService.showAlert('Error at getting information, please try again later.');
+        .catch(function(err) {
+          informationService.showAlert('Error at getting information, please try again later. '+err.data);
         });
     }
 
@@ -42,8 +42,8 @@
         .then(function(data) {
           vm.data = data;
         })
-        .catch(function() {
-          informationService.showAlert('Error at getting information, please try again later.');
+        .catch(function(err) {
+      informationService.showAlert('Error at getting information, please try again later. '+err.data.msg);
         })
         .finally(function() {
           vm.loadingData = false;

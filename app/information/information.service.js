@@ -15,7 +15,7 @@
     };
 
     function getInformation(state) {
-      var url = 'https://bitbucket.org/softruck/node-test/raw/91c2d054c5682887cd1c446ebad9fbc89468fe5a/output.json';
+      var url = 'http://localhost:8008/api/v1/information/state/'+state;
       return gatewayService.get(url);
     }
 
@@ -27,7 +27,6 @@
         .title('Atention')
         .textContent(message)
         .ok('OK')
-        .targetEvent(ev)
       );
     }
 
