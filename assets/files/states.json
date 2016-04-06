@@ -5,95 +5,95 @@
   },
   {
     "name": "Alagoas",
-    "value": "AL"
+    "value": "Alagoas"
   },
   {
     "name": "Amapá",
-    "value": "AP"
+    "value": "Amapa"
   },
   {
     "name": "Amazonas",
-    "value": "AM"
+    "value": "Amazonas"
   },
   {
     "name": "Bahia",
-    "value": "BA"
+    "value": "Bahia"
   },
   {
     "name": "Ceará",
-    "value": "CE"
+    "value": "Ceara"
   },
   {
     "name": "Distrito Federal",
-    "value": "DF"
+    "value": "Distrito Federal"
   },
   {
     "name": "Espirito Santo",
-    "value": "ES"
+    "value": "Espirito Santo"
   },
   {
     "name": "Goias",
-    "value": "GO"
+    "value": "Goias"
   },
   {
     "name": "Maranhão",
-    "value": "MA"
+    "value": "Maranhao"
   },
   {
     "name": "Mato Grosso",
-    "value": "MT"
+    "value": "Mato Grosso"
   },
   {
     "name": "Mato Grosso do Sul",
-    "value": "MS"
+    "value": "Mato Grosso do Sul"
   },
   {
     "name": "Minas Gerais",
-    "value": "MG"
+    "value": "Minas Gerais"
   },
   {
     "name": "Pará",
-    "value": "PA"
+    "value": "Para"
   },
   {
     "name": "Paraíba",
-    "value": "PB"
+    "value": "Paraiba"
   },
   {
     "name": "Paraná",
-    "value": "PR"
+    "value": "Parana"
   },
   {
     "name": "Pernambuco",
-    "value": "PE"
+    "value": "Pernambuco"
   },
   {
     "name": "Piauí",
-    "value": "PI"
+    "value": "Piaui"
   },
   {
     "name": "Rio de Janeiro",
-    "value": "RJ"
+    "value": "Rio de Janeiro"
   },
   {
     "name": "Rio Grande do Norte",
-    "value": "RN"
+    "value": "Rio Grande do Norte"
   },
   {
     "name": "Rio Grande do Sul",
-    "value": "RS"
+    "value": "Rio Grande do Sul"
   },
   {
     "name": "Rondônia",
-    "value": "RO"
+    "value": "Rondonia"
   },
   {
     "name": "Roraima",
-    "value": "RR"
+    "value": "Roraima"
   },
   {
     "name": "Santa Catarina",
-    "value": "SC"
+    "value": "Santa Catarina"
   },
   {
     "name": "São Paulo",
@@ -101,10 +101,10 @@
   },
   {
     "name": "Sergipe",
-    "value": "SE"
+    "value": "Sergipe"
   },
   {
     "name": "Tocantins",
-    "value": "TO"
+    "value": "Tocantins"
   }
 ]
