@@ -44,7 +44,15 @@ html, body, section, article, md-content {
   margin-top: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
-  height: 500px !important;
+  height: 300px !important;
+  overflow: auto;
+}
+.table-section-json {
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  height: 700px !important;
   overflow: auto;
 }
 .no-content-label {

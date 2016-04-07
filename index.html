@@ -62,8 +62,8 @@
                   <tr md-row>
                     <th md-column>State</th>
                     <th md-column>City</th>
-                    <th md-column>Fuel type</th>
-                    <th md-column>Station founded</th>
+                    <!-- <th md-column>Fuel type</th> -->
+                    <th md-column>Stations found</th>
                     <th md-column>Details</th>
                   </tr>
                 </thead>
@@ -71,10 +71,10 @@
                   <tr md-row ng-repeat="city in info.cities">
                     <td md-cell>{{info.name}}</td>
                     <td md-cell>{{city.name}}</td>
-                    <td md-cell>{{i.getFuelTypeName(city.statistics)}}</td>
-                    <td md-cell>{{city.stations.length}}</td>
+                    <!-- <td md-cell>{{i.getFuelTypeName(city.statistics)}}</td> -->
+                    <td md-cell>{{city.stations}}</td>
                     <td md-cell>
-                      <md-icon class="icon-details" ng-click="i.showDetail(info.name, city)">info</md-icon>
+                      <md-icon class="icon-details" ng-click="i.showDetail(info.name, city.name)">info</md-icon>
                     </td>
                     <md-icon>
                     </md-icon>
@@ -98,12 +98,12 @@
             </div>
           </section>
         </md-tab>
-        <md-tab label="JSON">
+        <md-tab label="JSON" md-on-select="i.getAllData()">
           <div ng-if="!i.data.length && !i.loadingData" class="no-content-label" layout="row" layout-align="center center">
             <label>No content.</label>
           </div>
-          <section layout="column" class="md-whiteframe-4dp table-section" ng-if="i.data.length && !i.loadingData">
-            <pretty-json json="i.data"></pretty-json>
+          <section layout="column" class="md-whiteframe-4dp table-section-json" ng-if="i.data.length && !i.loadingData">
+            <pretty-json json="i.jsonData"></pretty-json>
           </section>
         </md-tab>
       </md-tabs>

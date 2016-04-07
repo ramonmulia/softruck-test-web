@@ -1,15 +1,21 @@
 <style>
-  th,
-  td {
+  .detailsTable > th {
     text-align: center;
   }
 
-  table {
+  .detailsTable > td {
+    text-align: center;
+  }
+
+  .detailsTable {
     border-collapse: collapse;
   }
-  table,
-  th,
-  td {
+
+  .detailsTable {
+    border: 1px solid black;
+  }
+
+  .detailsTable *{
     border: 1px solid black;
   }
 
@@ -33,7 +39,7 @@
                   <legend>
                     <b>{{item.type}}</b>
                   </legend>
-                  <table show-gt-lg show-md hide-sm hide-xs style="width:100%; margin-top: 10px; border-collapse: collapse;">
+                  <table class="detailsTable" show-gt-lg show-md hide-sm hide-xs style="width:100%; margin-top: 10px; border-collapse: collapse;">
                     <thead>
                       <tr>
                         <td>Average Price</td>
@@ -56,24 +62,24 @@
                   <div hide-gt-sm show-sm show-xs layout="column">
                     <label>
                       <b>Average Price:
-                      </b>
-                      {{item.consumerPrice[0].averagePrice}}</label>
+                      </b> {{item.consumerPrice[0].averagePrice}}
+                    </label>
                     <label>
                       <b>Standard Deviation:
-                      </b>
-                      {{item.consumerPrice[0].standardDeviation}}</label>
+                      </b> {{item.consumerPrice[0].standardDeviation}}
+                    </label>
                     <label>
                       <b>Minimun Price:
-                      </b>
-                      {{item.consumerPrice[0].minPrice}}</label>
+                      </b> {{item.consumerPrice[0].minPrice}}
+                    </label>
                     <label>
                       <b>Maximun Price:
-                      </b>
-                      {{item.consumerPrice[0].maxPrice}}</label>
+                      </b> {{item.consumerPrice[0].maxPrice}}
+                    </label>
                     <label>
                       <b>Average Margin:
-                      </b>
-                      {{item.consumerPrice[0].averageMargin}}</label>
+                      </b> {{item.consumerPrice[0].averageMargin}}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -84,7 +90,7 @@
                   <legend>
                     <b>{{item.type}}</b>
                   </legend>
-                  <table show-gt-lg show-md hide-sm hide-xs style="width:100%;  margin-top: 10px; border-collapse: collapse;">
+                  <table class="detailsTable" show-gt-lg show-md hide-sm hide-xs style="width:100%;  margin-top: 10px; border-collapse: collapse;">
                     <thead>
                       <tr>
                         <td>Average Price</td>
@@ -105,20 +111,20 @@
                   <div hide-gt-sm show-sm show-xs layout="column">
                     <label>
                       <b>Average Price:
-                      </b>
-                      {{item.distributionPrice[0].averagePrice}}</label>
+                      </b> {{item.distributionPrice[0].averagePrice}}
+                    </label>
                     <label>
                       <b>Standard Deviation:
-                      </b>
-                      {{item.distributionPrice[0].standardDeviation}}</label>
+                      </b> {{item.distributionPrice[0].standardDeviation}}
+                    </label>
                     <label>
                       <b>Minimun Price:
-                      </b>
-                      {{item.distributionPrice[0].minPrice}}</label>
+                      </b> {{item.distributionPrice[0].minPrice}}
+                    </label>
                     <label>
                       <b>Maximun Price:
-                      </b>
-                      {{item.distributionPrice[0].maxPrice}}</label>
+                      </b> {{item.distributionPrice[0].maxPrice}}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -131,8 +137,8 @@
                   </div>
                   <div layout-gt-sm="row" layout-sm="column" layout-xs="column">
                     <label flex>
-                      <b>Address:</b>
-                      {{item.address}}</label>
+                      <b>Address:</b> {{item.address}}
+                    </label>
                     <label>
                       <b>Area:
                       </b>{{item.area}}
@@ -141,8 +147,7 @@
                   <div layout="row">
                     <label flex>
                       <b>Flag:
-                      </b>
-                      {{item.name}}
+                      </b> {{item.name}}
                     </label>
                   </div>
                 </div>
@@ -152,7 +157,7 @@
                     <legend>
                       <b>{{price.type}}</b>
                     </legend>
-                    <table show-gt-lg show-md hide-sm hide-xs style="width:100%;  margin-top: 10px; border-collapse: collapse;">
+                    <table class="detailsTable" show-gt-lg show-md hide-sm hide-xs style="width:100%;  margin-top: 10px; border-collapse: collapse;">
                       <thead>
                         <tr>
                           <td>Sell Price</td>
@@ -175,24 +180,24 @@
                     <div hide-gt-sm show-sm show-xs layout="column">
                       <label>
                         <b>Sell Price:
-                        </b>
-                        {{price.sellPrice}}</label>
+                        </b> {{price.sellPrice}}
+                      </label>
                       <label>
                         <b>Buy Price:
-                        </b>
-                        {{price.buyPrice}}</label>
+                        </b> {{price.buyPrice}}
+                      </label>
                       <label>
                         <b>Sale MOde:
-                        </b>
-                        {{price.saleMode}}</label>
+                        </b> {{price.saleMode}}
+                      </label>
                       <label>
                         <b>Provider:
-                        </b>
-                        {{price.provider}}</label>
+                        </b> {{price.provider}}
+                      </label>
                       <label>
                         <b>Date:
-                        </b>
-                        {{price.date}}</label>
+                        </b> {{price.date}}
+                      </label>
                     </div>
                   </div>
                 </fieldset>
