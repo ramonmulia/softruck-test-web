@@ -1,6 +1,11 @@
 (function() {
   "use strict";
 
+  angular.module("softruck-test").component("contentWrapper", {
+    template: "<ng-transclude></ng-transclude>",
+    transclude: true
+  });
+
   angular.module('softruck-test').controller('InformationController', informationController);
 
   informationController.$inject = ['$http', '$timeout', '$mdDialog', 'informationService'];
@@ -8,19 +13,29 @@
   function informationController($http, $timeout, $mdDialog, informationService) {
     var vm = this;
     vm.data = [];
+    vm.jsonData = [];
     vm.getInformation = getInformation;
     vm.showDetail = showDetail;
     vm.getAllData = getAllData;
 
+    vm.descelectTabJson = descelectTabJson;
     loadStates();
 
+    function descelectTabJson() {
+      vm.jsonData = [];
+    }
+
     function getAllData() {
+      vm.loadingJson = true;
       informationService.getAllData()
         .then(function(data) {
           vm.jsonData = data;
         })
         .catch(function(err) {
           informationService.showAlert('Error at getting information, please try again later. ' + err.data);
+        })
+        .finally(function() {
+          vm.loadingJson = false;
         });
     }
 
@@ -35,8 +50,8 @@
     }
 
     function getInformation(state) {
-
       if (state) {
+        vm.jsonData = [];
         vm.loadingData = true;
         informationService.getInformation(state)
           .then(function(data) {

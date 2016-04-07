@@ -7,7 +7,7 @@
   informationService.$inject = ['gatewayService', '$mdDialog'];
 
   function informationService(gatewayService, $mdDialog) {
-    var url = "http://localhost:8008/api/v1/informations/";
+    var url = "http://localhost:8008/api/v1/informations";
     return {
       getInformation: getInformation,
       getStates: getStates,
@@ -22,11 +22,11 @@
     }
 
     function getCityDetails(city) {
-      return gatewayService.get(url + 'city/' + city);
+      return gatewayService.get(url + '/city/' + city);
     }
 
     function getInformation(state) {
-      return gatewayService.get(url + 'state/' + state);
+      return gatewayService.get(url + '/state/' + state);
     }
 
     function showAlert(message) {

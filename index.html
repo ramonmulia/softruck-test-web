@@ -23,7 +23,7 @@
   <article>
     <md-content ng-controller="InformationController as i">
       <md-tabs md-dynamic-height md-border-bottom>
-        <md-tab label="Informations" layout="column" layout-align="center center">
+        <md-tab md-on-deselect="" label="Informations" layout="column" layout-align="center center">
           <section layout="row" layout-align="center center" style="margin: 2px;">
             <div class="md-whiteframe-4dp" style="margin: 10px" flex-gt-lg="30" flex-sm="100" flex-lg="30" layout="column" layout-align="center center">
               <h1 class="md-title" style="margin: 2px;">Select a state to find fuel information</h1>
@@ -41,15 +41,15 @@
             </div>
           </section>
 
-          <div layout="row" layout-align="center center" ng-if="i.loadingData">
+          <div layout="row" layout-align="center center" ng-show="i.loadingData">
             <md-progress-circular class="loading-table" md-diameter="100px" md-mode="indeterminate"></md-progress-circular>
           </div>
 
-          <div ng-if="!i.data.length && !i.loadingData" class="no-content-label" layout="row" layout-align="center center">
+          <div ng-show="!i.data.length && !i.loadingData" class="no-content-label" layout="row" layout-align="center center">
             <label>No content, please click at button to get.</label>
           </div>
 
-          <section show-gt-lg show-md hide-sm hide-xs layout="column" class="md-whiteframe-4dp table-section" ng-if="i.data.length && !i.loadingData">
+          <content-wrapper show-gt-lg show-md hide-sm hide-xs layout="column" class="md-whiteframe-4dp table-section" ng-show="i.data.length && !i.loadingData">
             <md-toolbar class="md-table-toolbar md-default">
               <div class="md-toolbar-tools">
                 <span>ANP fuel information</span>
@@ -82,8 +82,8 @@
                 </tbody>
               </table>
             </md-table-container>
-          </section>
-          <section flex layout-align="center center" hide-gt-sm show-sm show-xs layout="column" ng-if="i.data.length && !i.loadingData" class="md-whiteframe-4dp">
+          </content-wrapper>
+          <content-wrapper flex layout-align="center center" hide-gt-sm show-sm show-xs layout="column" ng-show="i.data.length && !i.loadingData" class="md-whiteframe-4dp">
             <h3 style="margin: 10px">Results:</h3>
             <div ng-repeat="info in i.data">
               <div ng-repeat="city in info.cities" layout="column" class="md-whiteframe-2dp" style="margin:10px; padding: 5px">
@@ -96,14 +96,17 @@
                 </label>
               </div>
             </div>
-          </section>
+          </content-wrapper>
         </md-tab>
-        <md-tab label="JSON" md-on-select="i.getAllData()">
-          <div ng-if="!i.data.length && !i.loadingData" class="no-content-label" layout="row" layout-align="center center">
+        <md-tab md-on-deselect="i.descelectTabJson()" label="JSON" md-on-select="i.getAllData()">
+          <div layout="row" layout-align="center center" ng-show="i.loadingJson">
+            <md-progress-circular class="loading-table" md-diameter="100px" md-mode="indeterminate"></md-progress-circular>
+          </div>
+          <div ng-show="!i.jsonData.length && !i.loadingJson" class="no-content-label" layout="row" layout-align="center center">
             <label>No content.</label>
           </div>
-          <section layout="column" class="md-whiteframe-4dp table-section-json" ng-if="i.data.length && !i.loadingData">
-            <pretty-json json="i.jsonData"></pretty-json>
+          <section layout="column" class="md-whiteframe-4dp table-section" ng-show="i.jsonData.length">
+            <pre>{{i.jsonData | json}}</pre>
           </section>
         </md-tab>
       </md-tabs>
