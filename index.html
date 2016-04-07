@@ -23,7 +23,7 @@
   <article>
     <md-content ng-controller="InformationController as i">
       <md-tabs md-dynamic-height md-border-bottom>
-        <md-tab md-on-deselect="" label="Informations" layout="column" layout-align="center center">
+        <md-tab label="Informations">
           <section layout="row" layout-align="center center" style="margin: 2px;">
             <div class="md-whiteframe-4dp" style="margin: 10px" flex-gt-lg="30" flex-sm="100" flex-lg="30" layout="column" layout-align="center center">
               <h1 class="md-title" style="margin: 2px;">Select a state to find fuel information</h1>
@@ -62,7 +62,6 @@
                   <tr md-row>
                     <th md-column>State</th>
                     <th md-column>City</th>
-                    <!-- <th md-column>Fuel type</th> -->
                     <th md-column>Stations found</th>
                     <th md-column>Details</th>
                   </tr>
@@ -71,7 +70,6 @@
                   <tr md-row ng-repeat="city in info.cities">
                     <td md-cell>{{info.name}}</td>
                     <td md-cell>{{city.name}}</td>
-                    <!-- <td md-cell>{{i.getFuelTypeName(city.statistics)}}</td> -->
                     <td md-cell>{{city.stations}}</td>
                     <td md-cell>
                       <md-icon class="icon-details" ng-click="i.showDetail(info.name, city.name)">info</md-icon>
@@ -98,7 +96,7 @@
             </div>
           </content-wrapper>
         </md-tab>
-        <md-tab md-on-deselect="i.descelectTabJson()" label="JSON" md-on-select="i.getAllData()">
+        <md-tab md-on-deselect="i.unselectTabJson()" label="JSON" md-on-select="i.getAllData()">
           <div layout="row" layout-align="center center" ng-show="i.loadingJson">
             <md-progress-circular class="loading-table" md-diameter="100px" md-mode="indeterminate"></md-progress-circular>
           </div>

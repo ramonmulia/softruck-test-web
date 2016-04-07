@@ -17,11 +17,11 @@
     vm.getInformation = getInformation;
     vm.showDetail = showDetail;
     vm.getAllData = getAllData;
+    vm.unselectTabJson = unselectTabJson;
 
-    vm.descelectTabJson = descelectTabJson;
     loadStates();
 
-    function descelectTabJson() {
+    function unselectTabJson() {
       vm.jsonData = [];
     }
 
@@ -44,8 +44,8 @@
         .then(function(data) {
           vm.states = data;
         })
-        .catch(function(err) {
-          informationService.showAlert('Error at getting information, please try again later. ' + err.data);
+        .catch(function() {
+          informationService.showAlert('Error at getting information, please try again later.');
         });
     }
 
@@ -66,7 +66,7 @@
               cities: citiesMapped
             }];
           })
-          .catch(function(err) {
+          .catch(function() {
             informationService.showAlert('Error at getting information, please try again later.');
           })
           .finally(function() {
