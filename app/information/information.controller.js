@@ -76,12 +76,10 @@
     }
 
     function showDetail(state, city) {
-      informationService.getCityDetails(city)
+      informationService.getCityDetails(state, city)
         .then(function(data) {
-          console.log(data);
           informationService.showInformationDetail(state, data);
         });
-
     }
   }
 })();

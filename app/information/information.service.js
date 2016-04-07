@@ -17,12 +17,12 @@
       getAllData: getAllData
     };
 
-    function getAllData(){
-        return gatewayService.get(url);
+    function getAllData() {
+      return gatewayService.get(url);
     }
 
-    function getCityDetails(city) {
-      return gatewayService.get(url + '/city/' + city);
+    function getCityDetails(state, city) {
+      return gatewayService.get(url + '/state/' + state + '/city/' + city);
     }
 
     function getInformation(state) {
