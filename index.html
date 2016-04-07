@@ -6,8 +6,6 @@
   <link rel="stylesheet" href="vendor/angular-material/angular-material.min.css">
   <link href="vendor/angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="assets/css/index.css" />
-  <link href="vendor/ng-prettyjson/dist/ng-prettyjson.min.css" rel="stylesheet" type="text/css" />
-
 </head>
 
 <body ng-app="softruck-test">
@@ -30,7 +28,7 @@
               <md-input-container style="width: 90%;">
                 <label>State</label>
                 <md-select ng-model="i.state">
-                  <md-option ng-selected="($index == 1) ? true:false" ng-repeat="state in i.states" value="{{state.value}}">
+                  <md-option ng-selected="($index == 0) ? true:false" ng-repeat="state in i.states" value="{{state.value}}">
                     {{state.name}}
                   </md-option>
                 </md-select>
@@ -43,10 +41,6 @@
 
           <div layout="row" layout-align="center center" ng-show="i.loadingData">
             <md-progress-circular class="loading-table" md-diameter="100px" md-mode="indeterminate"></md-progress-circular>
-          </div>
-
-          <div ng-show="!i.data.length && !i.loadingData" class="no-content-label" layout="row" layout-align="center center">
-            <label>No content, please click at button to get.</label>
           </div>
 
           <content-wrapper show-gt-lg show-md hide-sm hide-xs layout="column" class="md-whiteframe-4dp table-section" ng-show="i.data.length && !i.loadingData">
@@ -111,25 +105,19 @@
     </md-content>
   </article>
 
-  <sumary></sumary>
-
   <script src="vendor/angular/angular.min.js" type="text/javascript"></script>
   <script src="vendor/angular-animate/angular-animate.min.js" type="text/javascript"></script>
   <script src="vendor/angular-aria/angular-aria.min.js" type="text/javascript"></script>
   <script src="vendor/angular-messages/angular-messages.min.js" type="text/javascript"></script>
   <script src="vendor/angular-material/angular-material.min.js" type="text/javascript"></script>
   <script type="text/javascript" src="vendor/angular-material-data-table/dist/md-data-table.min.js"></script>
-  <script type="text/javascript" src="vendor/angular-route/angular-route.min.js"></script>
-  <script type="text/javascript" src="vendor/ng-prettyjson/dist/ng-prettyjson.min.js"></script>
 
   <!-- Dependencies -->
   <script src="app/app.module.js"></script>
-  <script src="app/app.config.js"></script>
   <script src="app/app.gateway.js"></script>
   <script src="app/information/information.service.js"></script>
   <script src="app/information/information.controller.js"></script>
   <script src="app/information/_information-detail.controller.js"></script>
-
 </body>
 
 </html>

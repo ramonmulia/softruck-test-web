@@ -1,11 +1,6 @@
 (function() {
   "use strict";
-
-  angular.module("softruck-test").component("contentWrapper", {
-    template: "<ng-transclude></ng-transclude>",
-    transclude: true
-  });
-
+  
   angular.module('softruck-test').controller('InformationController', informationController);
 
   informationController.$inject = ['$http', '$timeout', '$mdDialog', 'informationService'];

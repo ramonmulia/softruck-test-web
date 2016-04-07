@@ -5,6 +5,9 @@
     "type": "git",
     "url": "git+https://github.com/ramonmulia/softruck-test-web.git"
   },
+  "scripts": {
+    "start": "bower install && npm install && gulp serve"
+  },
   "author": "Ramon Mulia",
   "license": "ISC",
   "bugs": {
